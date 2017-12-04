@@ -260,12 +260,17 @@ function isTcNmae() {
         success: function (res) {
             //用户名已重复
             if(res !== ''){
+                //确认冲突套餐名标识
+                $('.mr_combo input').attr('pass','yes');
+                $('.mr_combo input').css('border','1px solid red');
                 $('#ctNameModal').modal({
                     backdrop: 'static',
                     keyboard: false
                 })
             }else{
                 $('.mr_combo input').css('border','1px solid #66A0CD');
+                //确认不冲突套餐名标识
+                $('.mr_combo input').attr('pass','no');
             }
         },
         error: function (err) {
@@ -278,17 +283,11 @@ $('#ctNameclose').click(function () {
     //清空套餐名字
     $('input[name="smName"]').val('');
     $('.mr_name p').text('');
-    //确认不冲突套餐名标识
-    $('.mr_combo input').attr('pass','yes');
-    $('.mr_combo input').css('border','1px solid #66A0CD');
     $('.mr_combo input').val('');
 });
 //继续用重复的套餐名
 $('#ctNamebut').click(function () {
     $('#ctNameModal').modal('hide');
-    //确认冲突套餐名标识
-    $('.mr_combo input').attr('pass','yes');
-    $('.mr_combo input').css('border','1px solid red')
 });
 //详细菜名数量增加
 function mrltnAdd(mlad) {
@@ -370,25 +369,31 @@ $('#rebut').click(function () {
     $('.mrl_content ul li').remove();
     $('#reModal').modal('hide');
     endpay();
-})
+});
+$('#upgoform').click(function () {
+    console.log('ccc')
+});
 //表单提交
 function upform() {
 
     //套餐名的非空验证（通过模态框提示）
     if($('input[name="smName"]').val() == ''){
         $('#jgModalLabel').text('');
-        $('#jgformdiv p').text('请填写套餐名');
+        $('#jgformdiv').empty();
+        let jg_content = `<p>请填写套餐名</p>`
+        $('#jgformdiv').text('请填写套餐名');
+        $('#jgformdiv').append(jg_content);
         $('#jgbut').hide();
-
         $('#jgModal').modal({
             keyboard: true
         });
     //是否有详细菜品（通过模态框提示）
     }else if($('.mrl_content ul li').length < 1){
         $('#jgModalLabel').text('');
-        $('#jgformdiv p').text('请添加套餐菜品');
+        $('#jgformdiv').empty();
+        let jg_content = `<p>请添加套餐菜品</p>`;
+        $('#jgformdiv').append(jg_content);
         $('#jgbut').hide();
-
         $('#jgModal').modal({
             keyboard: true
         });
@@ -396,7 +401,6 @@ function upform() {
     }else{
         $('#jgModalLabel').text('');
         $('#jgformdiv').empty();
-        $('#jgformdiv p').text('确认提交套餐？');
         let jgt;
         if ($('.mr_combo input').attr('pass') == 'yes'){
             jgt = `<p>确认提交套餐？</p>
@@ -469,7 +473,6 @@ function uploadformGo() {
                 $('#jgModalLabel').text('');
                 let jgt = `<p>套餐添加成功</p>`;
                 $('#jgformdiv').append(jgt);
-                debugger;
                 $('#jgbut').hide();
                 $('#jgModal').modal({
                     backdrop: 'static',
