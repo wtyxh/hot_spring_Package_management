@@ -323,12 +323,18 @@ body #mrlc_form {
 }
 .main .main_right .mr_account .mra_final {
   width: 90%;
-  text-align: right;
+  text-align: left;
+  text-indent: 5%;
 }
 .main .main_right .mr_account .mra_final span {
   color: red;
 }
-.main .main_right .mr_account .mra_final .mraf_reset {
+.main .main_right .mr_account .mra_OK {
+  padding: 20px 0 5px 0;
+  width: 100%;
+  text-align: center;
+}
+.main .main_right .mr_account .mra_OK .mraf_reset {
   float: left;
   padding: 5px 10px;
   background: #2F7FBF;
@@ -338,11 +344,6 @@ body #mrlc_form {
   margin-left: 5%;
   cursor: pointer;
 }
-.main .main_right .mr_account .mra_OK {
-  padding: 20px 0 5px 0;
-  width: 100%;
-  text-align: center;
-}
 .main .main_right .mr_account .mra_OK button {
   padding: 8px 30px;
   border: 1px solid #2F7FBF;
@@ -350,6 +351,7 @@ body #mrlc_form {
   color: white;
   cursor: pointer;
   border-radius: 3px;
+  margin-left: 20%;
 }
 #ggformdiv {
   width: 90%;
