@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>套餐管理界面</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <!-- 使用最新的IE兼容模式渲染此网页 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!-- 在双核浏览器下，默认使用webkit内核，由360浏览器提出 -->
+    <meta name="renderer" content="webkit">
+    <!--禁止手机号码识别-->
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css" />
+    <link href="vendor/bootstrap-fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="css/index.css" />
+</head>
+<body>
+    <form id="mrlc_form" onsubmit="return upform();" enctype="multipart/form-data">
+        <div class="mengc">
+            <p style="margin-left: 10%;width: 80%;margin-top: 10%;font-size: 16px;color: white;">正在进行套餐添加：<span style="font-size: 14px;color: red;">(已添加<span id="jindutext">0</span>%)</span></p>
+            <div class="progress" style="width: 80%;margin: 0 auto">
+                <div id="jindut" class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                    <span class="sr-only">20% Complete</span>
+                </div>
+            </div>
+        </div>
+    <div class="main">
+        <!--  左边菜品  -->
+        <div class="main_left">
+            <div class="ml_header">
+                <p>
+                    <span>出品部门：</span>
+                    <select id="bumen">
+
+                    </select>
+                    <span>菜品类别：</span>
+                    <select id="leibie">
+
+                    </select>
+                </p>
+                <div class="ml_search">
+                    <div class="sr_input">
+                        <input type="text" placeholder="输入菜品搜索" />
+                    </div>
+                    <div class="sr_img">
+                        <img src="img/search.png" />
+                    </div>
+                </div>
+            </div>
+            <div class="ml_content">
+                <ul id="cp_list">
+
+                </ul>
+            </div>
+        </div>
+        <!-- 右边详情 -->
+        <div class="main_rightpardon">
+            <div class="main_right">
+                <!-- 顶部名字 -->
+                <div class="mr_combo">
+                    <span>套餐名：</span>
+                    <input type="text" value="" placeholder="请输入套餐名" >
+                    <span style="margin-left: 2%">单位：</span>
+                    <select>
+                        <option value="人">人</option>
+                        <option value="席">席</option>
+                    </select>
+                </div>
+                <!-- 选项 -->
+                <div class="mr_select">
+                    <span class="mrc_list">
+                        <span>明细菜是否可单点：</span>
+                        <select id="isdd">
+                            <option value="0">是</option>
+                            <option value="1">否</option>
+                        </select>
+                    </span>
+                    <span class="mrc_list">
+                        <span>明细菜是否可打折：</span>
+                        <select id="isdz">
+                            <option value="0">是</option>
+                            <option value="1">否</option>
+                        </select>
+                    </span>
+                </div>
+                <!-- 价格 -->
+                <div class="mr_price">
+                    <span>原总价：<input class="tcyzj" type="text" disabled value="" />&nbsp;&nbsp;X&nbsp;&nbsp;折扣：</span>
+                    <select>
+                        <option value="1">不打折</option>
+                        <option value="0.95">95%</option>
+                        <option value="0.9">90%</option>
+                        <option value="0.85">85%</option>
+                        <option value="0.8">80%</option>
+                        <option value="0.75">75%</option>
+                        <option value="0.7">70%</option>
+                    </select>
+                    <span>&nbsp;=&nbsp;套餐价格：<input name="tcjg" type="text" disabled value="" /></span>
+                </div>
+                <!-- 标题 -->
+                <div class="mr_name">
+                    <p></p>
+                </div>
+                <!-- 图片上传 -->
+                <div class="uploadImg">
+                    <span>图片上传</span>
+                </div>
+                <!-- 详细菜名 -->
+                <div class="mr_list">
+                    <div class="mrl_title">
+                        <span class="mrlt_name">菜名</span>
+                        <span class="mrlt_number">数量</span>
+                        <span class="mrlt_unit">单价</span>
+                        <span class="mrlt_subtota">小计</span>
+                    </div>
+                    <div class="mrl_content">
+
+                            <input type="text" name="stPrice" hidden="hidden"  /><!--套餐价格 -->
+                            <input type="text" name="tcDiscount" hidden="hidden" /><!-- 折扣 -->
+                            <input type="text" name="smName" hidden="hidden"><!-- 套餐名 -->
+                            <input type="text" name="isdd" value="0" hidden="hidden"/><!-- 是否可单点 -->
+                            <input type="text" name="isNo" value="0" hidden="hidden"/><!-- 是否打折 -->
+                            <input type="text" value="人" name="smUnit" hidden="hidden"><!-- 套餐单位 人/席 -->
+                            <ul>
+
+                            </ul>
+
+                    </div>
+                </div>
+                <!-- 确定 -->
+                <div class="mr_account">
+
+                    <p class="mra_final"><b class="mraf_reset">重置</b>最终消费：<span></span></p>
+                    <p class="mra_OK"><button id="upgoform" type="submit">确定</button></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 选择套餐规格框 -->
+    <div class="modal fade" id="ggModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="ggModalLabel">套餐管理(套餐规格选取)</h4>
+                </div>
+                <div id="ggformdiv" class="modal-body">
+                    <p class="ggf_title">黄焖猪脚套餐：</p>
+                    <p class="ggf_content">
+                        <span class="ggfc_active">大份</span>
+                        <span>中份</span>
+                        <span>小份</span>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button id="ggbut" type="button" class="btn btn-primary">添加套餐</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 图片上传模态框 -->
+    <div class="modal fade" id="imgModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="imgModalLabel">图片上传：<span style="font-size: 14px;color: red">(每张图片上传的最大规格为1.5M)</span></h4>
+                </div>
+                <div id="imgformdiv" class="modal-body">
+                    <div class="form-group">
+                        <input id="file-1" accept="image/*" name="files" type="file" multiple data-overwrite-initial="false" data-min-file-count="2">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- 信息提示模态框 -->
+        <div class="modal fade" id="jgModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="jgModalLabel"></h4>
+                    </div>
+                    <div id="jgformdiv" class="modal-body">
+                        <p>ccc</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="jgclose" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button id="jgbut" type="button" class="btn btn-primary">添加套餐</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 套餐名重复提示框 -->
+        <div class="modal fade" id="ctNameModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="ctNameModalLabel"></h4>
+                    </div>
+                    <div id="ctNameformdiv" class="modal-body">
+                        <p>此套餐名已重复，是否继续？</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="ctNameclose" class="btn btn-default" data-dismiss="modal">重新另起套餐名</button>
+                        <button id="ctNamebut" type="button" class="btn btn-primary">继续用此套餐名</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 是否重置所有的菜名 -->
+        <div class="modal fade" id="reModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="reModalLabel"></h4>
+                    </div>
+                    <div id="reformdiv" class="modal-body">
+                        <p>是重置所有的已点菜单？（重置后无法恢复）</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="reclose" class="btn btn-default" data-dismiss="modal">否</button>
+                        <button id="rebut" type="button" class="btn btn-primary">是</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="vendor/jquery.min.js"></script>
+    <script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="vendor/bootstrap-fileinput/js/fileinput.js" ></script>
+    <script type="text/javascript" src="vendor/bootstrap-fileinput/js/fileinput_locale_zh.js" ></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script>
+
+    </script>
+</body>
+</html>

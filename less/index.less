@@ -1,0 +1,441 @@
+*{
+  margin:0;
+  padding:0;
+}
+html{
+  width: 100%;
+  height: 100%;
+}
+body{
+  width: 100%;
+  height: 100%;
+  #mrlc_form{
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.main{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  /*==========左边菜品=============*/
+  .main_left{
+    width: 65%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+
+    /*顶部横条*/
+    .ml_header{
+      width: 100%;
+      background: #DDF4EF;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      text-indent: 50px;
+      position: relative;
+      p{
+        span{
+          color:#66A0CD;
+          font-size: 14px;
+        }
+        select{
+          padding: 2px 10px 5px 10px;
+          border: 1px solid #66A0CD;
+          margin-right: 20px;
+          border-radius: 3px;
+          option{
+            font-size: 14px;
+          }
+        }
+      }
+      /* 搜索框 */
+      .ml_search{
+        position: absolute;
+        top: 11px;
+        right: 10%;
+        width: auto;
+        text-align: left;
+        text-indent: 0;
+        background: #F9C362;
+        border-radius: 3px;
+        overflow: hidden;
+
+        .sr_input{
+          background: white;
+          height: 34px;
+          width: auto;
+          display: inline-block;
+          line-height: 31px;
+          input{
+            outline: none;
+            padding: 0px 10px;
+            font-size: 14px;
+          }
+        }
+
+        .sr_img{
+          display: inline-block;
+          width: 35px;
+          height: 34px;
+          position: relative;
+          background: #F9C362;
+          text-align: center;
+          line-height: 35px;
+          cursor: pointer;
+        }
+          img {
+            width: 82%;
+            height: auto;
+
+        }
+      }
+    }
+
+    /*套餐列表*/
+    .ml_content{
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      border-right: 1px solid #ddd;
+      ul{
+        width: 100%;
+        height: auto;
+        text-align: left;
+        margin: 0 auto;
+        font-size: 0;
+        li{
+          display: inline-block;
+          padding: 10px 20px;
+          background: #02C3A9;
+          margin: 1% 1%;
+          list-style: noen;
+          cursor: pointer;
+          border-radius: 3px;
+          span{
+            color: white;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 3px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(2,194,169,0.5);
+      border-radius: 10px;
+      opacity: 0.5;
+    }
+  }
+  .main_rightpardon{
+    width: 35%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  /*右边内容*/
+  .main_right {
+    width: 97%;
+
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    /*套餐名*/
+    .mr_combo{
+      width: 100%;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-left: 1px solid #66A0CD;
+      text-indent: 3%;
+      span{
+        color: #66A0CD;
+        font-size: 14px;
+      }
+      input {
+        padding: 5px 20px;
+        border: 1px solid #66A0CD;
+        background: white;
+        border-radius: 3px;
+        font-size: 14px;
+      }
+      select{
+        padding: 2px 10px 5px 10px;
+        font-size: 12px;
+        border-radius: 3px;
+        border: 1px solid #66A0CD;
+      }
+    }
+
+    /*相关选项*/
+    .mr_select {
+      width: 100%;
+      background: #DDF4EF;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border-left: 1px solid #66A0CD;
+      text-indent: 3%;
+      display: flex;
+      .mrc_list {
+        width: 50%;
+        padding-bottom: 10px;
+        white-space: nowrap;
+          span {
+            font-size: 14px;
+            color:#66A0CD;
+
+          }
+          select {
+            padding: 2px 10px 5px 10px;
+            font-size: 12px;
+            border-radius: 3px;
+            border: 1px solid #66A0CD;
+
+          }
+      }
+    }
+
+    /*价格*/
+    .mr_price {
+      width: 100%;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border-left: 1px solid #66A0CD;
+      text-indent: 3%;
+      span{
+        font-size: 13px;
+        color: #66A0CD;
+        input{
+          padding: 2px 5px;
+          width: 13%;
+          background: white;
+          border: 1px solid #66A0CD;
+          text-align: center;
+          border-radius: 3px;
+        }
+      }
+      select{
+        padding: 2px 5px;
+        border: 1px solid #66A0CD;
+        border-radius: 3px;
+      }
+    }
+
+    /*套餐标题*/
+    .mr_name{
+      width: 100%;
+      background: #F9C362;
+      border-left: 1px solid #66A0CD;
+      text-align: center;
+      line-height: 40px;
+      P {
+        height: 40px;
+        text-align: center;
+        font-size: 20px;
+        color: white;
+      }
+    }
+    /* 图片上传 */
+    .uploadImg{
+      padding: 7px 0;
+      width: 100%;
+      background: #2F7FBF;
+      text-align: center;
+      border-left: 1px solid #66A0CD;
+      cursor: pointer;
+      span{
+        font-size: 16px;
+        color: white;
+
+      }
+    }
+    /*详细菜名*/
+
+    .mr_list{
+       width: 100%;
+       height: 100%;
+       display: flex;
+       flex-flow: column;
+      .mrl_title{
+         width: 100%;
+         padding-top: 15px;
+         padding-bottom: 3px;
+         display: flex;
+        span{
+          font-size: 13px;
+          flex: 1;
+          text-align: center;
+        }
+      }
+      .mrl_content {
+         width: 100%;
+         height: 100%;
+         overflow-x: hidden;
+        ul {
+          width: 100%;
+          height: auto;
+          li {
+            width: 100%;
+            height: auto;
+            white-space: nowrap;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            list-style: none;
+            display: flex;
+              input{
+                flex: 1;
+                text-align: center;
+                font-size: 13px;
+                display: inline-block;
+                width: 100%;
+                border: none;
+                background: white;
+              }
+
+              .hidden{
+               display: none;
+              }
+              .mrlt_number{
+                flex: 1;
+                text-align: center;
+                font-size: 13px;
+                display: inline-block;
+                span{
+                  padding: 1px 8px;
+                  background: #2F7FBF;
+                  border: none;
+                  cursor: pointer;
+                  color: white;
+                  border-radius: 3px;
+                }
+                input{
+                  width: 30%;
+                  border: none;
+                  background: white;
+                }
+                .mrltn_text{
+                  margin: 0 5px;
+                }
+              }
+          }
+        }
+      }
+      ::-webkit-scrollbar {
+        width: 5px;
+        height: 3px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #2F7FBF;
+        border-radius: 10px;
+        opacity: 0.5;
+      }
+    }
+
+    /* 最终确定 */
+    .mr_account{
+      padding: 15px 0;
+      width: 100%;
+
+      .mra_final{
+        width: 90%;
+        text-align: right;
+
+        span{
+          color: red;
+        }
+        .mraf_reset{
+          float: left;
+          padding: 5px 10px;
+          background: #2F7FBF;
+          color: white;
+          font-weight: normal;
+          border-radius: 3px;
+          margin-left: 5%;
+          cursor: pointer;
+        }
+      }
+      .mra_OK{
+        padding: 20px 0 5px 0;
+        width: 100%;
+        text-align: center;
+        button{
+          padding: 8px 30px;
+          border: 1px solid #2F7FBF;
+          background: #2F7FBF;
+          color: white;
+          cursor: pointer;
+          border-radius: 3px;
+        }
+      }
+    }
+  }
+}
+//套餐选择规格
+#ggformdiv{
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
+  .ggf_title{
+    font-size: 17px;
+  }
+  .ggf_content{
+    width: 70%;
+    margin: 0 auto;
+    span{
+      font-size: 16px;
+      display: inline-block;
+      padding: 5px 30px;
+      background: #02C3A9;
+      color: white;
+      border-radius: 3px;
+      margin: 0 10px;
+      cursor: pointer;
+    }
+    .ggfc_active{
+      background: #337ab7;
+    }
+  }
+}
+
+/* 图片上传 */
+.file-preview{
+  height: 285px;
+  overflow-x: hidden;
+}
+.file-drop-zone{
+  height: auto;
+}
+::-webkit-scrollbar {
+  width: 5px;
+  height: 3px;
+}
+::-webkit-scrollbar-thumb {
+  background: #dddddd;
+  border-radius: 10px;
+  opacity: 0.5;
+}
+//警告提示框
+.modal-header{
+  padding: 10px 15px 5px 15px;
+}
+#jgformdiv{
+  padding: 5px 15px;
+  p{
+    margin-bottom: 0;
+    text-align: center;
+    font-size: 18px;
+  }
+}
+
+//上传时候的正在上传的蒙层
+.mengc{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 2;
+}
